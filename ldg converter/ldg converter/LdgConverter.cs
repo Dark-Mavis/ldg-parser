@@ -16,7 +16,7 @@ namespace ldg_converter
     }
     class LdgConverter
     {
-        public Units units { get; set; }
+        public Units Units { get; set; }
         private ArrayList file = new ArrayList();
         private string[] data;
         public List<Truss> trusses { get; set; }
@@ -46,11 +46,11 @@ namespace ldg_converter
             }
             if (data[0] == "Imperial2")
             {
-                units = Units.Imperial2;
+                Units = Units.Imperial2;
             }
             else if (data[0] == "Metric3")
             {
-                units = Units.Metric3;
+                Units = Units.Metric3;
             }
             for(int i = 1; i < data.Count(); i++)
             {

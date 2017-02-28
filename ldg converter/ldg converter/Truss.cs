@@ -9,10 +9,12 @@ namespace ldg_converter
 {
     class Truss
     {
-        private ArrayList loads;
+        public List<Load> loads;
+        public string TrussLabel { get; set; }
         public Truss(int trussType, String label)
         {
-            loads = new ArrayList();
+            loads = new List<Load>();
+            TrussLabel = label;
         }
         public void addLoad(String loadLabel, double distanceOfLoadCL, bool loadOnTopChord, double distanceOfConnection, int trussChord, double angle)
         {

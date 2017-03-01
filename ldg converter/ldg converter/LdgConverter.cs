@@ -19,7 +19,7 @@ namespace ldg_converter
         public Units Units { get; set; }
         private ArrayList file = new ArrayList();
         private string[] data;
-        public List<Truss> trusses { get; set; }
+        private List<Truss> trusses { get; set; }
         public LdgConverter(string location)
         {
             trusses = new List<Truss>();

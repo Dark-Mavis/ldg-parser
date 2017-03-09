@@ -36,7 +36,7 @@ namespace ldg_converter
             Assert.AreEqual(fred.trusses[0].loads[0].LoadOnTopChord, false);
             Assert.AreEqual(fred.trusses[0].loads[0].DistanceOfConnection, 0.000);
             Assert.AreEqual(fred.trusses[0].loads[0].TrussChord, 0);
-            Assert.AreEqual(fred.trusses[0].loads[0].Angle, 90.0000);
+            Assert.AreEqual(fred.trusses[0].loads[0].AngleInDegrees, 90.0000);
         }
         [Test]
         public void TestfredTruss1()
@@ -46,7 +46,7 @@ namespace ldg_converter
             Assert.AreEqual(fred.trusses[0].loads[1].LoadOnTopChord, false);
             Assert.AreEqual(fred.trusses[0].loads[1].DistanceOfConnection, 0.000);
             Assert.AreEqual(fred.trusses[0].loads[1].TrussChord, 0);
-            Assert.AreEqual(fred.trusses[0].loads[1].Angle, 90.0000);
+            Assert.AreEqual(fred.trusses[0].loads[1].AngleInDegrees, 90.0000);
         }
         [Test]
         public void TestfredTruss2()
@@ -56,7 +56,7 @@ namespace ldg_converter
             Assert.AreEqual(fred.trusses[0].loads[2].LoadOnTopChord, false);
             Assert.AreEqual(fred.trusses[0].loads[2].DistanceOfConnection, 0.000);
             Assert.AreEqual(fred.trusses[0].loads[2].TrussChord, 0);
-            Assert.AreEqual(fred.trusses[0].loads[2].Angle, 90.0000);
+            Assert.AreEqual(fred.trusses[0].loads[2].AngleInDegrees, 90.0000);
         }
         [Test]
         public void TestfredTruss3()

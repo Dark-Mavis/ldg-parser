@@ -34,7 +34,7 @@ namespace ldg_converter
             Assert.AreEqual(fred.trusses[0].loads[0].LoadLabel, "R-70A");
             Assert.AreEqual(fred.trusses[0].loads[0].DistanceOfLoadCL, 5.0208);
             Assert.AreEqual(fred.trusses[0].loads[0].LoadOnTopChord, false);
-            Assert.AreEqual(fred.trusses[0].loads[0].DistanceOfConnection, 0.000);
+            Assert.AreEqual(fred.trusses[0].loads[0].DistanceOfConnectionInches, 0.000);
             Assert.AreEqual(fred.trusses[0].loads[0].TrussChord, 0);
             Assert.AreEqual(fred.trusses[0].loads[0].AngleInDegrees, 90.0000);
         }
@@ -44,7 +44,7 @@ namespace ldg_converter
             Assert.AreEqual(fred.trusses[0].loads[1].LoadLabel, "R-70C");
             Assert.AreEqual(fred.trusses[0].loads[1].DistanceOfLoadCL, 1.0208);
             Assert.AreEqual(fred.trusses[0].loads[1].LoadOnTopChord, false);
-            Assert.AreEqual(fred.trusses[0].loads[1].DistanceOfConnection, 0.000);
+            Assert.AreEqual(fred.trusses[0].loads[1].DistanceOfConnectionInches, 0.000);
             Assert.AreEqual(fred.trusses[0].loads[1].TrussChord, 0);
             Assert.AreEqual(fred.trusses[0].loads[1].AngleInDegrees, 90.0000);
         }
@@ -54,7 +54,7 @@ namespace ldg_converter
             Assert.AreEqual(fred.trusses[0].loads[2].LoadLabel, "R-70B");
             Assert.AreEqual(fred.trusses[0].loads[2].DistanceOfLoadCL, 3.0208);
             Assert.AreEqual(fred.trusses[0].loads[2].LoadOnTopChord, false);
-            Assert.AreEqual(fred.trusses[0].loads[2].DistanceOfConnection, 0.000);
+            Assert.AreEqual(fred.trusses[0].loads[2].DistanceOfConnectionInches, 0.000);
             Assert.AreEqual(fred.trusses[0].loads[2].TrussChord, 0);
             Assert.AreEqual(fred.trusses[0].loads[2].AngleInDegrees, 90.0000);
         }

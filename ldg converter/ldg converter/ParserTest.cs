@@ -7,189 +7,171 @@ using System.Threading.Tasks;
 namespace ldg_converter
 {
     using NUnit.Framework;
+    using Properties;
+
     [TestFixture]
     class ParserTest
     {
-        LdgConverter fred = new LdgConverter(("C:/Users/Cerullium/OneDrive/Work/ldg-parser/ldg converter/ldg converter/RGR-75.ldg"));
-        LdgConverter fred0 = new LdgConverter(("C:/Users/Cerullium/OneDrive/Work/ldg-parser/ldg converter/ldg converter/R-21.ldg"));
-        LdgConverter fred1 = new LdgConverter(("C:/Users/Cerullium/OneDrive/Work/ldg-parser/ldg converter/ldg converter/R-5.ldg"));
-        LdgConverter fred2 = new LdgConverter(("C:/Users/Cerullium/OneDrive/Work/ldg-parser/ldg converter/ldg converter/R-52.ldg"));
-        LdgConverter fred3 = new LdgConverter(("C:/Users/Cerullium/OneDrive/Work/ldg-parser/ldg converter/ldg converter/R-66.ldg"));
-        LdgConverter fred4 = new LdgConverter(("C:/Users/Cerullium/OneDrive/Work/ldg-parser/ldg converter/ldg converter/R-8.ldg"));
-        LdgConverter fred5 = new LdgConverter(("C:/Users/Cerullium/OneDrive/Work/ldg-parser/ldg converter/ldg converter/R-93.ldg"));
-        LdgConverter fred6 = new LdgConverter(("C:/Users/Cerullium/OneDrive/Work/ldg-parser/ldg converter/ldg converter/R-56.ldg"));
-        LdgConverter fred7 = new LdgConverter(("C:/Users/Cerullium/OneDrive/Work/ldg-parser/ldg converter/ldg converter/R-31.ldg"));
-        LdgConverter fred8 = new LdgConverter(("C:/Users/Cerullium/OneDrive/Work/ldg-parser/ldg converter/ldg converter/R-80.ldg"));
-        LdgConverter fred9 = new LdgConverter(("C:/Users/Cerullium/OneDrive/Work/ldg-parser/ldg converter/ldg converter/T-31A.ldg"));
+        LdgConverter multipleLoadsOnATruss = new LdgConverter(Encoding.UTF8.GetString(Resources.RGR_75));
+        LdgConverter sixEmptyTrusses = new LdgConverter(Encoding.UTF8.GetString(Resources.R_21));
+        LdgConverter fourteenEmptyTrusses = new LdgConverter(Encoding.UTF8.GetString(Resources.R_5));
+        LdgConverter fourEmptyTrusses = new LdgConverter(Encoding.UTF8.GetString(Resources.R_52));
+        LdgConverter nineEmptyTrusses = new LdgConverter(Encoding.UTF8.GetString(Resources.R_66));
+        LdgConverter threeEmptyTrusses = new LdgConverter(Encoding.UTF8.GetString(Resources.R_56));
+        LdgConverter sixteenEmptyTrusses = new LdgConverter(Encoding.UTF8.GetString(Resources.R_31));
+        LdgConverter tenEmptyTrusses = new LdgConverter(Encoding.UTF8.GetString(Resources.R_80));
+        LdgConverter oneEmptyTruss = new LdgConverter(Encoding.UTF8.GetString(Resources.T_31A));
 
+        [Test]
+        public void TestmultipleLoadsOnATrussTruss1to4()
+        {
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[1].TrussLabel, "R-76");
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[2].TrussLabel, "R-77");
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[3].TrussLabel, "R-78");
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[4].TrussLabel, "R-79");
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses.Count, 5);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[1].loads.Count, 0);
+
+        }
         [Test]
         public void TestEnum()
         {
-            Assert.AreEqual(fred.Units, Units.Imperial2);
+            Assert.AreEqual(multipleLoadsOnATruss.Units, UnitType.Imperial2);
         }
         [Test]
-        public void TestfredTruss0()
+        public void TestmultipleLoadsOnATrussTruss0Load0()
         {
-            Assert.AreEqual(fred.trusses[0].TrussLabel, "RGR-75");
-            Assert.AreEqual(fred.trusses[0].loads[0].LoadLabel, "R-70A");
-            Assert.AreEqual(fred.trusses[0].loads[0].DistanceOfLoadCL, 5.0208);
-            Assert.AreEqual(fred.trusses[0].loads[0].LoadOnTopChord, false);
-            Assert.AreEqual(fred.trusses[0].loads[0].DistanceOfConnectionInches, 0.000);
-            Assert.AreEqual(fred.trusses[0].loads[0].TrussChord, 0);
-            Assert.AreEqual(fred.trusses[0].loads[0].AngleInDegrees, 90.0000);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].TrussLabel, "RGR-75");
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[0].LoadLabel, "R-70A");
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[0].DistanceOfLoadCLInches, 5.0208);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[0].LoadOnTopChord, false);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[0].DistanceOfConnectionInches, 0.000);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[0].TrussChord, 0);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[0].AngleInDegrees, 90.0000);
         }
         [Test]
-        public void TestfredTruss1()
+        public void TestmultipleLoadsOnATrussTruss0Load1()
         {
-            Assert.AreEqual(fred.trusses[0].loads[1].LoadLabel, "R-70C");
-            Assert.AreEqual(fred.trusses[0].loads[1].DistanceOfLoadCL, 1.0208);
-            Assert.AreEqual(fred.trusses[0].loads[1].LoadOnTopChord, false);
-            Assert.AreEqual(fred.trusses[0].loads[1].DistanceOfConnectionInches, 0.000);
-            Assert.AreEqual(fred.trusses[0].loads[1].TrussChord, 0);
-            Assert.AreEqual(fred.trusses[0].loads[1].AngleInDegrees, 90.0000);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[1].LoadLabel, "R-70C");
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[1].DistanceOfLoadCLInches, 1.0208);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[1].LoadOnTopChord, false);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[1].DistanceOfConnectionInches, 0.000);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[1].TrussChord, 0);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[1].AngleInDegrees, 90.0000);
         }
         [Test]
-        public void TestfredTruss2()
+        public void TestmultipleLoadsOnATrussTruss0Load2()
         {
-            Assert.AreEqual(fred.trusses[0].loads[2].LoadLabel, "R-70B");
-            Assert.AreEqual(fred.trusses[0].loads[2].DistanceOfLoadCL, 3.0208);
-            Assert.AreEqual(fred.trusses[0].loads[2].LoadOnTopChord, false);
-            Assert.AreEqual(fred.trusses[0].loads[2].DistanceOfConnectionInches, 0.000);
-            Assert.AreEqual(fred.trusses[0].loads[2].TrussChord, 0);
-            Assert.AreEqual(fred.trusses[0].loads[2].AngleInDegrees, 90.0000);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[2].LoadLabel, "R-70B");
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[2].DistanceOfLoadCLInches, 3.0208);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[2].LoadOnTopChord, false);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[2].DistanceOfConnectionInches, 0.000);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[2].TrussChord, 0);
+            Assert.AreEqual(multipleLoadsOnATruss.Trusses[0].loads[2].AngleInDegrees, 90.0000);
         }
         [Test]
-        public void TestfredTruss3()
+        public void TestsixEmptyTrussesTruss()
         {
-            Assert.AreEqual(fred.trusses[1].TrussLabel, "R-76");
-            Assert.AreEqual(fred.trusses[2].TrussLabel, "R-77");
-            Assert.AreEqual(fred.trusses[3].TrussLabel, "R-78");
-            Assert.AreEqual(fred.trusses[4].TrussLabel, "R-79");
-            Assert.AreEqual(fred.trusses.Count, 5);
-            Assert.AreEqual(fred.trusses[1].loads.Count, 0);
-
+            Assert.AreEqual(sixEmptyTrusses.Trusses[0].TrussLabel, "R-21");
+            Assert.AreEqual(sixEmptyTrusses.Trusses[1].TrussLabel, "R-22");
+            Assert.AreEqual(sixEmptyTrusses.Trusses[2].TrussLabel, "R-23");
+            Assert.AreEqual(sixEmptyTrusses.Trusses[3].TrussLabel, "R-24");
+            Assert.AreEqual(sixEmptyTrusses.Trusses[4].TrussLabel, "GR-25");
+            Assert.AreEqual(sixEmptyTrusses.Trusses[5].TrussLabel, "GR-26");
+            Assert.AreEqual(sixEmptyTrusses.Trusses.Count, 6);
         }
         [Test]
-        public void Testfred0Truss()
+        public void TestfourteenEmptyTrussesTruss()
         {
-            Assert.AreEqual(fred0.trusses[0].TrussLabel, "R-21");
-            Assert.AreEqual(fred0.trusses[1].TrussLabel, "R-22");
-            Assert.AreEqual(fred0.trusses[2].TrussLabel, "R-23");
-            Assert.AreEqual(fred0.trusses[3].TrussLabel, "R-24");
-            Assert.AreEqual(fred0.trusses[4].TrussLabel, "GR-25");
-            Assert.AreEqual(fred0.trusses[5].TrussLabel, "GR-26");
-            Assert.AreEqual(fred0.trusses.Count, 6);
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[0].TrussLabel, "R-5");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[1].TrussLabel, "R-6A");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[2].TrussLabel, "R-6B");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[3].TrussLabel, "R-6C");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[4].TrussLabel, "R-6D");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[5].TrussLabel, "R-7A");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[6].TrussLabel, "R-7B");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[7].TrussLabel, "R-7C");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[8].TrussLabel, "R-7D");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[9].TrussLabel, "R-7E");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[10].TrussLabel, "R-7F");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[11].TrussLabel, "R-7G");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[12].TrussLabel, "R-7H");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses[13].TrussLabel, "R-7I");
+            Assert.AreEqual(fourteenEmptyTrusses.Trusses.Count, 14);
         }
         [Test]
-        public void Testfred1Truss()
+        public void TestfourEmptyTrussesTruss()
         {
-            Assert.AreEqual(fred1.trusses[0].TrussLabel, "R-5");
-            Assert.AreEqual(fred1.trusses[1].TrussLabel, "R-6A");
-            Assert.AreEqual(fred1.trusses[2].TrussLabel, "R-6B");
-            Assert.AreEqual(fred1.trusses[3].TrussLabel, "R-6C");
-            Assert.AreEqual(fred1.trusses[4].TrussLabel, "R-6D");
-            Assert.AreEqual(fred1.trusses[5].TrussLabel, "R-7A");
-            Assert.AreEqual(fred1.trusses[6].TrussLabel, "R-7B");
-            Assert.AreEqual(fred1.trusses[7].TrussLabel, "R-7C");
-            Assert.AreEqual(fred1.trusses[8].TrussLabel, "R-7D");
-            Assert.AreEqual(fred1.trusses[9].TrussLabel, "R-7E");
-            Assert.AreEqual(fred1.trusses[10].TrussLabel, "R-7F");
-            Assert.AreEqual(fred1.trusses[11].TrussLabel, "R-7G");
-            Assert.AreEqual(fred1.trusses[12].TrussLabel, "R-7H");
-            Assert.AreEqual(fred1.trusses[13].TrussLabel, "R-7I");
-            Assert.AreEqual(fred1.trusses.Count, 14);
+            Assert.AreEqual(fourEmptyTrusses.Trusses[0].TrussLabel, "R-52");
+            Assert.AreEqual(fourEmptyTrusses.Trusses[1].TrussLabel, "R-53");
+            Assert.AreEqual(fourEmptyTrusses.Trusses[2].TrussLabel, "R-54");
+            Assert.AreEqual(fourEmptyTrusses.Trusses[3].TrussLabel, "R-55");
+            Assert.AreEqual(fourEmptyTrusses.Trusses.Count, 4);
         }
         [Test]
-        public void Testfred2Truss()
+        public void TestnineEmptyTrussesTruss()
         {
-            Assert.AreEqual(fred2.trusses[0].TrussLabel, "R-52");
-            Assert.AreEqual(fred2.trusses[1].TrussLabel, "R-53");
-            Assert.AreEqual(fred2.trusses[2].TrussLabel, "R-54");
-            Assert.AreEqual(fred2.trusses[3].TrussLabel, "R-55");
-            Assert.AreEqual(fred2.trusses.Count, 4);
+            Assert.AreEqual(nineEmptyTrusses.Trusses[0].TrussLabel, "R-66");
+            Assert.AreEqual(nineEmptyTrusses.Trusses[1].TrussLabel, "R-71");
+            Assert.AreEqual(nineEmptyTrusses.Trusses[2].TrussLabel, "R-70C");
+            Assert.AreEqual(nineEmptyTrusses.Trusses[3].TrussLabel, "R-70B");
+            Assert.AreEqual(nineEmptyTrusses.Trusses[4].TrussLabel, "R-70A");
+            Assert.AreEqual(nineEmptyTrusses.Trusses[5].TrussLabel, "R-69C");
+            Assert.AreEqual(nineEmptyTrusses.Trusses[6].TrussLabel, "R-69B");
+            Assert.AreEqual(nineEmptyTrusses.Trusses[7].TrussLabel, "R-69A");
+            Assert.AreEqual(nineEmptyTrusses.Trusses[8].TrussLabel, "R-68");
+            Assert.AreEqual(nineEmptyTrusses.Trusses[9].TrussLabel, "R-67");
+            Assert.AreEqual(nineEmptyTrusses.Trusses.Count,10);
         }
         [Test]
-        public void Testfred3Truss()
+        public void TestthreeEmptyTrussesTruss()
         {
-            Assert.AreEqual(fred3.trusses[0].TrussLabel, "R-66");
-            Assert.AreEqual(fred3.trusses[1].TrussLabel, "R-71");
-            Assert.AreEqual(fred3.trusses[2].TrussLabel, "R-70C");
-            Assert.AreEqual(fred3.trusses[3].TrussLabel, "R-70B");
-            Assert.AreEqual(fred3.trusses[4].TrussLabel, "R-70A");
-            Assert.AreEqual(fred3.trusses[5].TrussLabel, "R-69C");
-            Assert.AreEqual(fred3.trusses[6].TrussLabel, "R-69B");
-            Assert.AreEqual(fred3.trusses[7].TrussLabel, "R-69A");
-            Assert.AreEqual(fred3.trusses[8].TrussLabel, "R-68");
-            Assert.AreEqual(fred3.trusses[9].TrussLabel, "R-67");
-            Assert.AreEqual(fred3.trusses.Count,10);
+            Assert.AreEqual(threeEmptyTrusses.Trusses[0].TrussLabel, "R-56");
+            Assert.AreEqual(threeEmptyTrusses.Trusses[1].TrussLabel, "R-57");
+            Assert.AreEqual(threeEmptyTrusses.Trusses[2].TrussLabel, "R-58");
+            Assert.AreEqual(threeEmptyTrusses.Trusses.Count, 3);
         }
         [Test]
-        public void Testfred4Truss()
+        public void TestsixteenEmptyTrussesTruss()
         {
-            Assert.AreEqual(fred4.trusses[0].TrussLabel, "R-8");
-            Assert.AreEqual(fred4.trusses[1].TrussLabel, "R-9");
-            Assert.AreEqual(fred4.trusses[2].TrussLabel, "R-10");
-            Assert.AreEqual(fred4.trusses[3].TrussLabel, "R-11");
-            Assert.AreEqual(fred4.trusses.Count, 4);
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[0].TrussLabel, "R-31");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[1].TrussLabel, "R-32");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[2].TrussLabel, "R-33A");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[3].TrussLabel, "R-33B");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[4].TrussLabel, "R-33C");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[5].TrussLabel, "R-34A");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[6].TrussLabel, "R-34B");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[7].TrussLabel, "R-34C");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[8].TrussLabel, "R-34D");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[9].TrussLabel, "R-35A");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[10].TrussLabel, "R-35B");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[11].TrussLabel, "R-35C");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[12].TrussLabel, "R-35D");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[13].TrussLabel, "R-35E");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[14].TrussLabel, "R-35F");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses[15].TrussLabel, "R-35G");
+            Assert.AreEqual(sixteenEmptyTrusses.Trusses.Count,16);
         }
         [Test]
-        public void Testfred5Truss()
+        public void TesttenEmptyTrussesTruss()
         {
-            Assert.AreEqual(fred5.trusses[0].TrussLabel, "R-93");
-            Assert.AreEqual(fred5.trusses[1].TrussLabel, "R-94");
-            Assert.AreEqual(fred5.trusses[2].TrussLabel, "R-95");
-            Assert.AreEqual(fred5.trusses[3].TrussLabel, "R-96");
-            Assert.AreEqual(fred5.trusses.Count, 4);
+            Assert.AreEqual(tenEmptyTrusses.Trusses[0].TrussLabel, "R-80");
+            Assert.AreEqual(tenEmptyTrusses.Trusses[1].TrussLabel, "R-81");
+            Assert.AreEqual(tenEmptyTrusses.Trusses[2].TrussLabel, "R-82");
+            Assert.AreEqual(tenEmptyTrusses.Trusses[3].TrussLabel, "R-83");
+            Assert.AreEqual(tenEmptyTrusses.Trusses[4].TrussLabel, "R-89");
+            Assert.AreEqual(tenEmptyTrusses.Trusses[5].TrussLabel, "R-88");
+            Assert.AreEqual(tenEmptyTrusses.Trusses[6].TrussLabel, "R-87");
+            Assert.AreEqual(tenEmptyTrusses.Trusses[7].TrussLabel, "R-86");
+            Assert.AreEqual(tenEmptyTrusses.Trusses[8].TrussLabel, "R-85");
+            Assert.AreEqual(tenEmptyTrusses.Trusses[9].TrussLabel, "R-84");
+            Assert.AreEqual(tenEmptyTrusses.Trusses.Count, 10);
         }
         [Test]
-        public void Testfred6Truss()
+        public void TestoneEmptyTrussTruss()
         {
-            Assert.AreEqual(fred6.trusses[0].TrussLabel, "R-56");
-            Assert.AreEqual(fred6.trusses[1].TrussLabel, "R-57");
-            Assert.AreEqual(fred6.trusses[2].TrussLabel, "R-58");
-            Assert.AreEqual(fred6.trusses.Count, 3);
-        }
-        [Test]
-        public void Testfred7Truss()
-        {
-            Assert.AreEqual(fred7.trusses[0].TrussLabel, "R-31");
-            Assert.AreEqual(fred7.trusses[1].TrussLabel, "R-32");
-            Assert.AreEqual(fred7.trusses[2].TrussLabel, "R-33A");
-            Assert.AreEqual(fred7.trusses[3].TrussLabel, "R-33B");
-            Assert.AreEqual(fred7.trusses[4].TrussLabel, "R-33C");
-            Assert.AreEqual(fred7.trusses[5].TrussLabel, "R-34A");
-            Assert.AreEqual(fred7.trusses[6].TrussLabel, "R-34B");
-            Assert.AreEqual(fred7.trusses[7].TrussLabel, "R-34C");
-            Assert.AreEqual(fred7.trusses[8].TrussLabel, "R-34D");
-            Assert.AreEqual(fred7.trusses[9].TrussLabel, "R-35A");
-            Assert.AreEqual(fred7.trusses[10].TrussLabel, "R-35B");
-            Assert.AreEqual(fred7.trusses[11].TrussLabel, "R-35C");
-            Assert.AreEqual(fred7.trusses[12].TrussLabel, "R-35D");
-            Assert.AreEqual(fred7.trusses[13].TrussLabel, "R-35E");
-            Assert.AreEqual(fred7.trusses[14].TrussLabel, "R-35F");
-            Assert.AreEqual(fred7.trusses[15].TrussLabel, "R-35G");
-            Assert.AreEqual(fred7.trusses.Count,16);
-        }
-        [Test]
-        public void Testfred8Truss()
-        {
-            Assert.AreEqual(fred8.trusses[0].TrussLabel, "R-80");
-            Assert.AreEqual(fred8.trusses[1].TrussLabel, "R-81");
-            Assert.AreEqual(fred8.trusses[2].TrussLabel, "R-82");
-            Assert.AreEqual(fred8.trusses[3].TrussLabel, "R-83");
-            Assert.AreEqual(fred8.trusses[4].TrussLabel, "R-89");
-            Assert.AreEqual(fred8.trusses[5].TrussLabel, "R-88");
-            Assert.AreEqual(fred8.trusses[6].TrussLabel, "R-87");
-            Assert.AreEqual(fred8.trusses[7].TrussLabel, "R-86");
-            Assert.AreEqual(fred8.trusses[8].TrussLabel, "R-85");
-            Assert.AreEqual(fred8.trusses[9].TrussLabel, "R-84");
-            Assert.AreEqual(fred8.trusses.Count, 10);
-        }
-        [Test]
-        public void Testfred9Truss()
-        {
-            Assert.AreEqual(fred9.trusses[0].TrussLabel, "T-31A");
-            Assert.AreEqual(fred9.trusses.Count, 1);
+            Assert.AreEqual(oneEmptyTruss.Trusses[0].TrussLabel, "T-31A");
+            Assert.AreEqual(oneEmptyTruss.Trusses.Count, 1);
         }
     }
 }

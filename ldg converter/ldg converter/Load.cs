@@ -12,7 +12,7 @@ namespace ldg_converter
     class Load
     {
         public string LoadLabel { get; set; }
-        public double DistanceOfLoadCLInches { get; set; }
+        public double DistanceOfLoadCLInches { get; set; }//not sure what CL means
         public bool LoadOnTopChord { get; set; }
         public double DistanceOfConnectionInches { get; set; }
         public int TrussChord { get; set; }
